@@ -4,3 +4,6 @@ services:
     image: 91goout-admin-nginx
     ports:
       - 80:80
+    volumes:
+      - /var/projects/91goout-admin/nginx.conf:/etc/nginx/nginx.conf
+
