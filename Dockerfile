@@ -6,7 +6,7 @@ WORKDIR /usr/src/91goout-admin/
 
 COPY . /usr/src/91goout-admin/
 
-RUN npm install
+RUN npm install --production
 
 RUN npm run build
 
@@ -15,4 +15,4 @@ FROM nginx:stable-alpine
 
 COPY --from=builder /usr/src/91goout-admin/build /usr/share/nginx/html
 
-CMD ["nginx" "-g" "daemon off"]
+CMD ["nginx", "-g" ,"daemon off"]
