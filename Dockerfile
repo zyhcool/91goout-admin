@@ -1,4 +1,4 @@
-FROM node:lts-alpine3.9
+FROM node:lts-alpine3.9 as builder
 
 RUN mkdir -p /usr/src/91goout-admin/
 
@@ -13,6 +13,6 @@ RUN npm run build
 
 FROM nginx:stable-alpine
 
-RUN mv /usr/src/91goout-admin/build /usr/share/nginx/html
+COPY --from=builder /usr/src/91goout-admin/build /usr/share/nginx/html
 
 CMD ["nginx" "-g" "daemon off"]
