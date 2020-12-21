@@ -1,0 +1,11 @@
+# 单体部署
+version: '3.7'
+services:
+  nginx:
+    image: nginx:stable-alpine
+    volumes:
+      - /var/projects/91goout-admin/build:/usr/share/nginx/html
+    ports:
+      - 80:80
+    networks:
+      - 91goout-web-net
